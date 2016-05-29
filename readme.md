@@ -16,7 +16,7 @@ This test is successful if Boehm GC NEVER free the memory between "useMem (): af
 So we have to run it multiple times until the last gc succeeded.
 
 For example, in this run, the last three "free bytes": are all equals to 184320.
-So we don't know if the second "free bytes" is only by chance.
+So we don't know if the penultimate "free bytes" is only by chance.
  
 ```
 francois@ubuntu:~/proyectos/oss/scala-native-fbd/sn-test-gc_malloc_ptr_arrays$ ./target/scala-2.11/sn-test-gc_malloc_ptr_arrays-out 
