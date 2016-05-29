@@ -13,10 +13,10 @@ As a conservative garbage collector, Boehm GC does not guarantee to collect non 
 This is inconvenient because two consecutive invocation of the program behave differently.
 This test is successful if Boehm GC NEVER free the memory between "useMem (): after gc" and "testArrayPtr (): after useMemReturnPtr and after first gc" 
 
-So we have to run it multiple time until the last gc succeeded.
+So we have to run it multiple times until the last gc succeeded.
 
-For example, in thia run, the last three "free bytes": are all equals to 184320.
-So we don't know if the second "free bytes" is by chance.
+For example, in this run, the last three "free bytes": are all equals to 184320.
+So we don't know if the second "free bytes" is only by chance.
  
 ```
 francois@ubuntu:~/proyectos/oss/scala-native-fbd/sn-test-gc_malloc_ptr_arrays$ ./target/scala-2.11/sn-test-gc_malloc_ptr_arrays-out 
