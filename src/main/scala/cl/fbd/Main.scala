@@ -63,6 +63,13 @@ object Main {
     fprintf(stdout, c"free bytes: %d\n", freeBytesAfter2)
     fprintf(stdout, c"\n")
     
+    // GC_collect is random in Boehm GC, sometimes it works, other times it don't
+    // so we cannot conclude anything if memory allocated inside useMem isn't collected
+    if (freeBytesAfter2 >= freeBytesAfter1 + 10000000)
+      fprintf(stdout, c"Test succesfull\n")
+    else 
+      fprintf(stdout, c"I'm not sure\n")
+    
     ()
   }
 

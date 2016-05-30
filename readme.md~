@@ -9,8 +9,8 @@ This test checks that Array[Ptr[_]] aren't treated as primitive arrays and that 
 Important note
 --------------
 
-Boehm GC is exhibiting random behavior between program execution.
-
+As a conservative garbage collector, Boehm GC does not guarantee to collect non reachable memory. 
+This is inconvenient because two consecutive invocation of the program behave differently.
 This test is successful if Boehm GC NEVER free the memory between "useMem (): after gc" and "testArrayPtr (): after useMemReturnPtr and after first gc" 
 
 So we have to run it multiple times until the last gc succeeded.
@@ -26,7 +26,7 @@ heap size: 65536
 free bytes: 53248
 
 useMem (): before gc
-ptr address hex: 0x113f000, int: 18083840
+ptr address hex: 0x15b8000, int: 22773760
 heap size: 10199040
 free bytes: 184320
 
@@ -41,8 +41,6 @@ free bytes: 184320
 testArrayPtr (): after forgetting the pointer and after second gc
 heap size: 10199040
 free bytes: 184320
-
-I'm not sure
 ```
 
 In this second run, the last "free bytes" is equals to 10186752 and indicates that
@@ -56,7 +54,7 @@ heap size: 65536
 free bytes: 53248
 
 useMem (): before gc
-ptr address hex: 0x1a2b000, int: 27439104
+ptr address hex: 0x1dd2000, int: 31268864
 heap size: 10199040
 free bytes: 184320
 
@@ -71,7 +69,5 @@ free bytes: 184320
 testArrayPtr (): after forgetting the pointer and after second gc
 heap size: 10199040
 free bytes: 10186752
-
-Test succesfull
 
 ```
